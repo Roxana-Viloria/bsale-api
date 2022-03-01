@@ -4,15 +4,20 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
+const swaggerUi = require('swagger-ui-express')
+const swaggerFile = require('./swagger_output.json')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var sqlinjection = require('sql-injection');
 
 const cors = require("cors");
 const db = require("./models");
 
 
 var app = express();
+
+app.use(sqlinjection);  // add sql-injection middleware here
 
 app.use(cors());
 
@@ -29,12 +34,13 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
 // db.sequelize.sync({force:false});
+app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerFile))
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+const productsRouter = require("./routes/products.routes");
+const categoryRouter = require("./routes/category.routes")
 
-require("./routes/products.routes")(app);
-require("./routes/category.routes")(app);
+app.use('/api/product', productsRouter);
+app.use('/api/category', categoryRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

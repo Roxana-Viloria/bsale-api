@@ -1,0 +1,250 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Bsale API",
+    "description": "Documentacion de la base de datos Api bsale, para desarrollo de proyecto de super mercado"
+  },
+  "host": "localhost:3001",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/api/product/": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Endpoint para obtener todos los productos",
+        "parameters": [
+          {
+            "name": "name",
+            "description": "texto de busqueda con el nombre de los productos.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "productos encontrados.",
+            "schema": {
+              "$ref": "#/definitions/products"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/product/{id}": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "description": "Endpoint para obtener un producto",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID del producto."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "producto encontrado.",
+            "schema": {
+              "$ref": "#/definitions/product"
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/category/": {
+      "get": {
+        "tags": [
+          "Category"
+        ],
+        "description": "Endpoint para obtener todas las categorias",
+        "parameters": [
+          {
+            "name": "name",
+            "description": "nombre de las categoria.",
+            "in": "query",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "categoria encontrada.",
+            "schema": {
+              "$ref": "#/definitions/categories"
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/category/{id}": {
+      "get": {
+        "tags": [
+          "Category"
+        ],
+        "description": "Endpoint para obtener una categoria",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "ID de la categoria."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "categoria encontrada.",
+            "schema": {
+              "$ref": "#/definitions/category"
+            }
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1"
+          },
+          "name": {
+            "type": "string",
+            "example": "bebidas energeticas"
+          }
+        }
+      }
+    },
+    "category": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
+        "name": {
+          "type": "string",
+          "example": "ron"
+        },
+        "products": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "example": "1"
+              },
+              "name": {
+                "type": "string",
+                "example": "Ron EL Abuelo"
+              },
+              "urlImage": {
+                "type": "string",
+                "example": "https://dojiw2m9tvv09.cloudfront.net/11132/product/misterbig3308256.jpg"
+              },
+              "price": {
+                "type": "string",
+                "example": "1400"
+              },
+              "discount": {
+                "type": "string",
+                "example": "10"
+              }
+            }
+          }
+        }
+      }
+    },
+    "products": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "1"
+          },
+          "name": {
+            "type": "string",
+            "example": "Ron EL Abuelo"
+          },
+          "urlImage": {
+            "type": "string",
+            "example": "https://dojiw2m9tvv09.cloudfront.net/11132/product/misterbig3308256.jpg"
+          },
+          "price": {
+            "type": "string",
+            "example": "1400"
+          },
+          "discount": {
+            "type": "string",
+            "example": "10"
+          }
+        }
+      }
+    },
+    "product": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "1"
+        },
+        "name": {
+          "type": "string",
+          "example": "Ron EL Abuelo"
+        },
+        "urlImage": {
+          "type": "string",
+          "example": "https://dojiw2m9tvv09.cloudfront.net/11132/product/misterbig3308256.jpg"
+        },
+        "price": {
+          "type": "string",
+          "example": "1400"
+        },
+        "discount": {
+          "type": "string",
+          "example": "10"
+        }
+      }
+    }
+  }
+}
