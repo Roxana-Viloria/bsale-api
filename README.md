@@ -2,7 +2,18 @@
 
 Desarrollo proyecto Bsale y Api Rest
 
-El proyecto consiste en realizar una pantalla de un super mercado ficticio en donde los usuarios puedan ver la categoria de productos disponibles en tienda, así como,  los productos disponibles en cada categoría. 
+El proyecto consiste en realizar una pantalla de un super mercado ficticio en donde los usuarios puedan ver la categoria de productos disponibles en tienda, así como, los productos disponibles en cada categoría. 
+
+Para hacer el desarrollo Front End, trabajé con el framework NodeJs y Express y Sequelize conseguir acceso a la base de datos. Una vez creado el proyecto Express obtuve el archivo www que indica la información que se trae, puertos etc. y luego se hizo el archivo config para la base de datos. 
+
+En el proyecto desarollé los modelos: 
+
+category.controller. js y product.controller.js en los cuales desarollé las funciones para solicitar a la base de datos categorias y productos para que sean mostrados en pantalla. 
+
+Los Archivos category.model.js y product.models.js fueron creados para dar la estructura de la información que quiero sea traida de la base de datos, por ejemplo, queria que trajera imagen del producto, nombre, precio etc.
+
+y por ultimo con category.routes.js y products.routes.js se crearon para definir la ruta de los endpoints. 
+
 
 Inicio del proyecto con desarrollo de front end, a los fines de visualizar con claridad en pantalla como deberia verse la app. 
 Primera parte: arquitectura de la app: 
